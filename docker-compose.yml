@@ -79,7 +79,7 @@ services:
       environment:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-dash:8332"
         - "COIN=DASH"     
-        -"DEPENDENCIES=x11_hash"
+        - "DEPENDENCIES=x11_hash"
         - "TCP_PORT=50031"
         - "SSL_PORT=50032"       
       volumes:

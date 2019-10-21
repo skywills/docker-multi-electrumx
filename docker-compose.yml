@@ -39,7 +39,6 @@ services:
         - node-litecoin   
 
     node-litecoin:
-      build: .
       image: skywills87/litecoind:latest
       environment:
         - 'RPCUSER=${RPC_USER}'
@@ -63,7 +62,6 @@ services:
         - node-bchabc        
 
     node-bchabc:
-      build: .
       image: skywills87/bucash:latest
       environment:
         - 'RPCUSER=${RPC_USER}'
@@ -88,7 +86,6 @@ services:
         - node-dash      
 
     node-dash:
-      build: .
       image: skywills87/dashd:latest
       environment:
         - 'RPCUSER=${RPC_USER}'
@@ -112,7 +109,6 @@ services:
         - node-bchsv   
 
     node-bchsv:
-      build: .
       image: skywills87/bitcoinsv:latest
       environment:
         - 'RPCUSER=${RPC_USER}'
@@ -136,7 +132,6 @@ services:
         - node-qtum       
 
     node-qtum:
-      build: .
       image: skywills87/qtumd:latest
       environment:
         - 'RPCUSER=${RPC_USER}'

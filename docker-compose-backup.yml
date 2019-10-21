@@ -1,0 +1,53 @@
+version: '3'
+services:
+    electrumx-bitcoin:
+      image: skywills87/electrumx
+      ports: 
+        - "${SERVICE_PORT}:50001"    
+    node-bitcoin:
+      image: skywills87/bitcoind:latest
+      ports:
+        - "${BITCOIND_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+    node-litecoin:
+      build: .
+      image: skywills87/litecoind:latest
+      ports:
+        - "${LITECOIND_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+    node-dash:
+      build: .
+      image: skywills87/dashd:latest
+      ports:
+        - "${DASHD_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}' 
+    node-bchabc:
+      build: .
+      image: skywills87/bucash:latest
+      ports:
+        - "${BUCASH_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'         
+    node-bchsv:
+      build: .
+      image: skywills87/bitcoinsv:latest
+      ports:
+        - "${BCHSV_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'                
+    node-qtum:
+      build: .
+      image: skywills87/qtumd:latest
+      ports:
+        - "${QTUM_PORT}:8332"
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'           

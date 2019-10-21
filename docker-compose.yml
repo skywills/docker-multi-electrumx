@@ -1,0 +1,145 @@
+version: '3'
+services:
+    electrumx-bitcoin:
+      image: skywills87/electrumx
+      ports: 
+        - "50001:50001"  
+        - "50002:50002"            
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bitcoin:8332"
+        - "COIN=BitcoinSegwit"     
+        - "TCP_PORT=50001"
+        - "SSL_PORT=50002"   
+      volumes:
+        - "${VOL_BITCOIN_ELECTRUM}:/data"     
+      depends_on:
+        - node-bitcoin
+
+    node-bitcoin:
+      image: skywills87/bitcoind:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+      volumes:
+        - "${VOL_BITCOIN_DATA}:/root/.bitcoin"            
+    
+    electrumx-litecoin:
+      image: skywills87/electrumx
+      ports: 
+        - "50011:50011"  
+        - "50012:50012"  
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-litecoin:8332"
+        - "COIN=Litecoin"     
+        - "TCP_PORT=50011"
+        - "SSL_PORT=50012"           
+      volumes:
+        - "${VOL_LITECOIN_ELECTRUM}:/data"          
+      depends_on:
+        - node-litecoin   
+
+    node-litecoin:
+      build: .
+      image: skywills87/litecoind:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+      volumes:
+        - "${VOL_LITECOIN_DATA}:/root/.litecoin"            
+
+    electrumx-bchabc:
+      image: skywills87/electrumx
+      ports: 
+        - "50021:50021"  
+        - "50022:50022"   
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchabc:8332"
+        - "COIN=BitcoinCashABC"     
+        - "TCP_PORT=50021"
+        - "SSL_PORT=50022"    
+      volumes:
+        - "${VOL_BCHABC_ELECTRUM}:/data"                 
+      depends_on:
+        - node-bchabc        
+
+    node-bchabc:
+      build: .
+      image: skywills87/bucash:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'  
+      volumes:
+        - "${VOL_BCHABC_DATA}:/root/.bitcoin"        
+
+    electrumx-dash:
+      image: skywills87/electrumx
+      ports: 
+        - "50031:50031"  
+        - "50032:50032"    
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-dash:8332"
+        - "COIN=DASH"     
+        -"DEPENDENCIES=x11_hash"
+        - "TCP_PORT=50031"
+        - "SSL_PORT=50032"       
+      volumes:
+        - "${VOL_DASH_ELECTRUM}:/data"            
+      depends_on:
+        - node-dash      
+
+    node-dash:
+      build: .
+      image: skywills87/dashd:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}' 
+      volumes:
+        - "${VOL_DASH_DATA}:/root/.dashcore"   
+
+    electrumx-bchsv:
+      image: skywills87/electrumx
+      ports: 
+        - "50041:50041"  
+        - "50042:50042"     
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchsv:8332"
+        - "COIN=BitcoinSV"     
+        - "TCP_PORT=50041"
+        - "SSL_PORT=50042"          
+      volumes:
+        - "${VOL_BCHSV_ELECTRUM}:/data"             
+      depends_on:
+        - node-bchsv   
+
+    node-bchsv:
+      build: .
+      image: skywills87/bitcoinsv:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'   
+      volumes:
+        - "${VOL_BCHSV_DATA}:/root/.bitcoin"    
+
+    electrumx-qtum:
+      image: skywills87/electrumx-qtum
+      ports: 
+        - "50051:50051"  
+        - "50052:50052"   
+      environment:
+        - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-qtum:8332"
+        - "COIN=QTUM"     
+        - "TCP_PORT=50051"
+        - "SSL_PORT=50052"     
+      volumes:
+        - "${VOL_QTUM_ELECTRUM}:/data"                
+      depends_on:
+        - node-qtum       
+
+    node-qtum:
+      build: .
+      image: skywills87/qtumd:latest
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'    
+      volumes:
+        - "${VOL_BCHSV_DATA}:/root/.qtum"    

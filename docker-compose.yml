@@ -20,6 +20,7 @@ services:
       environment:
         - 'RPCUSER=${RPC_USER}'
         - 'RPCPASSWORD=${RPC_PASSWORD}'
+        - 'TESTNET=${TESTNET}'
       volumes:
         - "${VOL_BITCOIN_DATA}:/root/.bitcoin"            
     
@@ -43,6 +44,7 @@ services:
       environment:
         - 'RPCUSER=${RPC_USER}'
         - 'RPCPASSWORD=${RPC_PASSWORD}'
+        - 'TESTNET=${TESTNET}'        
       volumes:
         - "${VOL_LITECOIN_DATA}:/root/.litecoin"            
 
@@ -66,6 +68,7 @@ services:
       environment:
         - 'RPCUSER=${RPC_USER}'
         - 'RPCPASSWORD=${RPC_PASSWORD}'  
+        - 'TESTNET=${TESTNET}'        
       volumes:
         - "${VOL_BCHABC_DATA}:/root/.bitcoin"        
 
@@ -90,6 +93,7 @@ services:
       environment:
         - 'RPCUSER=${RPC_USER}'
         - 'RPCPASSWORD=${RPC_PASSWORD}' 
+        - 'TESTNET=${TESTNET}'        
       volumes:
         - "${VOL_DASH_DATA}:/root/.dashcore"   
 
@@ -113,6 +117,7 @@ services:
       environment:
         - 'RPCUSER=${RPC_USER}'
         - 'RPCPASSWORD=${RPC_PASSWORD}'   
+        - 'TESTNET=${TESTNET}'        
       volumes:
         - "${VOL_BCHSV_DATA}:/root/.bitcoin"    
 
@@ -135,6 +140,7 @@ services:
       image: skywills87/qtumd:latest
       environment:
         - 'RPCUSER=${RPC_USER}'
-        - 'RPCPASSWORD=${RPC_PASSWORD}'    
+        - 'RPCPASSWORD=${RPC_PASSWORD}'  
+        - 'TESTNET=${TESTNET}'          
       volumes:
-        - "${VOL_BCHSV_DATA}:/root/.qtum"    
+        - "${VOL_QTUM_DATA}:/root/.qtum"    

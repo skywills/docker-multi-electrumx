@@ -8,8 +8,7 @@ services:
       environment:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bitcoin:8332"
         - "COIN=BitcoinSegwit"     
-        - "TCP_PORT=50001"
-        - "SSL_PORT=50002"   
+        - "SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000"
       volumes:
         - "${VOL_BITCOIN_ELECTRUM}:/data"     
       depends_on:
@@ -32,8 +31,7 @@ services:
       environment:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-litecoin:8332"
         - "COIN=Litecoin"     
-        - "TCP_PORT=50011"
-        - "SSL_PORT=50012"           
+        - "SERVICES=tcp://:50011,ssl://:50012,wss://:50014,rpc://0.0.0.0:8000"  
       volumes:
         - "${VOL_LITECOIN_ELECTRUM}:/data"          
       depends_on:
@@ -56,8 +54,7 @@ services:
       environment:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchabc:8332"
         - "COIN=BitcoinCashABC"     
-        - "TCP_PORT=50021"
-        - "SSL_PORT=50022"    
+        - "SERVICES=tcp://:50021,ssl://:50022,wss://:50024,rpc://0.0.0.0:8000"  
       volumes:
         - "${VOL_BCHABC_ELECTRUM}:/data"                 
       depends_on:
@@ -81,8 +78,7 @@ services:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-dash:8332"
         - "COIN=DASH"     
         - "DEPENDENCIES=x11_hash"
-        - "TCP_PORT=50031"
-        - "SSL_PORT=50032"       
+        - "SERVICES=tcp://:50031,ssl://:50032,wss://:50034,rpc://0.0.0.0:8000"  
       volumes:
         - "${VOL_DASH_ELECTRUM}:/data"            
       depends_on:
@@ -105,8 +101,7 @@ services:
       environment:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchsv:8332"
         - "COIN=BitcoinSV"     
-        - "TCP_PORT=50041"
-        - "SSL_PORT=50042"          
+        - "SERVICES=tcp://:50041,ssl://:50042,wss://:50044,rpc://0.0.0.0:8000"     
       volumes:
         - "${VOL_BCHSV_ELECTRUM}:/data"             
       depends_on:

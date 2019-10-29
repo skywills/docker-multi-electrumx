@@ -9,6 +9,7 @@ services:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bitcoin:8332"
         - "COIN=BitcoinSegwit"     
         - "SERVICES=tcp://0.0.0.0:50001,ssl://0.0.0.0:50002,wss://0.0.0.0:50004,rpc://0.0.0.0:8000"
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"
       volumes:
         - "${VOL_BITCOIN_ELECTRUM}:/data"     
       depends_on:
@@ -32,6 +33,7 @@ services:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-litecoin:8332"
         - "COIN=Litecoin"     
         - "SERVICES=tcp://0.0.0.0:50011,ssl://0.0.0.0:50012,wss://0.0.0.0:50014,rpc://0.0.0.0:8000"  
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"        
       volumes:
         - "${VOL_LITECOIN_ELECTRUM}:/data"          
       depends_on:
@@ -55,6 +57,7 @@ services:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchabc:8332"
         - "COIN=BitcoinCashABC"     
         - "SERVICES=tcp://0.0.0.0:50021,ssl://0.0.0.0:50022,wss://0.0.0.0:50024,rpc://0.0.0.0:8000"  
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"        
       volumes:
         - "${VOL_BCHABC_ELECTRUM}:/data"                 
       depends_on:
@@ -79,6 +82,7 @@ services:
         - "COIN=DASH"     
         - "DEPENDENCIES=x11_hash"
         - "SERVICES=tcp://0.0.0.0:50031,ssl://0.0.0.0:50032,wss://0.0.0.0:50034,rpc://0.0.0.0:8000"  
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"        
       volumes:
         - "${VOL_DASH_ELECTRUM}:/data"            
       depends_on:
@@ -102,6 +106,7 @@ services:
         - "DAEMON_URL=http://${RPC_USER}:${RPC_PASSWORD}@node-bchsv:8332"
         - "COIN=BitcoinSV"     
         - "SERVICES=tcp://0.0.0.0:50041,ssl://0.0.0.0:50042,wss://0.0.0.0:50044,rpc://0.0.0.0:8000"     
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"        
       volumes:
         - "${VOL_BCHSV_ELECTRUM}:/data"             
       depends_on:
@@ -126,6 +131,7 @@ services:
         - "COIN=QTUM"     
         - "TCP_PORT=50051"
         - "SSL_PORT=50052"     
+        - "INITIAL_CONCURRENT=${INITIAL_CONCURRENT}"        
       volumes:
         - "${VOL_QTUM_ELECTRUM}:/data"                
       depends_on:
